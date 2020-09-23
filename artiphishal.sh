@@ -29,8 +29,7 @@ echo "[*] Sending Server IP"
 echo "[*] --------------------------"
 echo
 srv_IP=$(grep "^Received: from" $mailFile | awk '{print $3,$4}')
-#srv_IP_only=$(grep "^Received: from" $mailFile | awk '{print $3,$4}' | cut -d " " -f 2 | sed -re 's,\(\[,,g' | sed -re 's,\]\),,g')
-srv_IP_only=$(grep "^Received: from" $mailFile | awk '{print $3,$4}' | cut -d " " -f 2 | sed -re 's,\(\[,,g ; s,\]\),,g')
+srv_IP_only=$(grep "^Received: from" $mailFile | awk '{print $3,$4}' | cut -d " " -f 2 | sed -re 's,\(\[,,g ; s,\]\),,g ; s,\(,,g ; s,\),,g')
 echo $srv_IP
 echo $srv_IP_only
 echo
